@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/table";
 import { Card } from "@/components/ui/card";
 import { debounce } from "lodash";
+import { fetchBuyers } from "../hooks/fetchBuyers";
 
 export default function BuyersPage() {
   const router = useRouter();
@@ -43,7 +44,7 @@ export default function BuyersPage() {
   const [timeline, setTimeline] = useState(searchParams.get("timeline") || "");
   const page = parseInt(searchParams.get("page") || "1");
 
-  // 🔍 Debounced search
+  // Debounced search
   const debouncedSearch = debounce((value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) params.set("search", value);
@@ -63,15 +64,13 @@ export default function BuyersPage() {
 
   // Fetch buyers
   useEffect(() => {
-    async function fetchBuyers() {
+    async function fetchData() {
       setLoading(true);
-      const res = await fetch(`/api/buyers/import?${searchParams.toString()}`);
-      const data = await res.json();
-      setBuyers(data.data || []);
-      setPagination(data.pagination || { page: 1, totalPages: 1 });
+      const data = await fetchBuyers(searchParams);
+      setBuyers(data || []);
       setLoading(false);
     }
-    fetchBuyers();
+    fetchData();
   }, [searchParams]);
 
   return (

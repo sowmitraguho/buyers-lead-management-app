@@ -40,7 +40,7 @@ export const buyerBaseSchema = z.object({
   phone: z.string().regex(/^\d{10,15}$/, "Phone must be numeric and 10–15 digits"),
   city: CityEnum,
   propertyType: PropertyTypeEnum,
-  bhk: z.union([BHKEnum, z.string().length(0)]).optional(), // empty string allowed for non-residential
+  bhk: z.union([BHKEnum, z.string().min(0).max(10)]).optional(), // empty string allowed for non-residential
   purpose: PurposeEnum,
   budgetMin: z.preprocess(val => {
     if (val === "" || val === null || val === undefined) return undefined;
@@ -58,9 +58,7 @@ export const buyerBaseSchema = z.object({
   tags: z.array(z.string()).optional(),
 });
 
-// refine conditional rules:
-// - bhk required iff propertyType is Apartment or Villa
-// - budgetMax >= budgetMin when both present
+
 export const buyerCreateSchema = buyerBaseSchema
   .superRefine((data, ctx) => {
     const prop = data.propertyType;
