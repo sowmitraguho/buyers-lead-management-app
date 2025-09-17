@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+````markdown
+# Buyers Lead Management App
+
+A web application for managing property buyers and their leads, built with **Next.js**, **TypeScript**, **Supabase**, and **Tailwind CSS**. This app helps real estate agents or property dealers manage buyer information, track property interests, and export leads efficiently.
+
+---
+
+## Table of Contents
+
+- [Features](#features)  
+- [Tech Stack](#tech-stack)  
+- [Installation](#installation)  
+- [Environment Variables](#environment-variables)  
+- [Available Scripts](#available-scripts)  
+- [Folder Structure](#folder-structure)  
+- [Usage](#usage)  
+- [Contributing](#contributing)  
+- [License](#license)  
+
+---
+
+## Features
+
+- Add, edit, and manage buyer details
+- Track buyer interests (city, property type, budget, BHK, etc.)
+- Export buyer leads to CSV
+- Property management (add/update/delete properties)
+- Authentication using Supabase
+- Role-based access (Admin, HR, Employee)
+- Responsive UI with Tailwind CSS
+- Client-side form validation with React Hook Form and Zod
+- Toast notifications for user feedback
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 15, React 19, TypeScript  
+- **Backend / Database:** Supabase (PostgreSQL)  
+- **UI Components:** Tailwind CSS, Radix UI  
+- **Form Validation:** React Hook Form, Zod  
+- **Utilities:** Lodash, UUID, clsx  
+- **Deployment:** Netlify  
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/sowmitraguho/buyers-lead-management-app.git
+cd buyers-lead-management-app
+````
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory with the following environment variables:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
+NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+supabase_project_password=your_project_password
+```
+
+> Make sure your Supabase URL is a valid `https://` URL, and server-only keys do **not** have `NEXT_PUBLIC_` prefix.
+
+---
+
+## Available Scripts
+
+* **Development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Build for production:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Start production server:**
 
-## Learn More
+```bash
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+* **Export static site (optional):**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run export
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Folder Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+/src
+  /app
+    /api           # API routes for buyers, properties, auth
+    /buyers        # Pages for buyer listing, details, and new buyer form
+    /properties    # Property pages
+    layout.tsx     # Main layout
+  /components      # Reusable components (Navbar, Testimonial, etc.)
+  /lib             # Utility functions, middleware, Supabase client
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Usage
+
+1. Start the development server:
+
+```bash
+npm run dev
+```
+
+2. Open `http://localhost:3000` in your browser.
+3. Use the app to manage buyers, properties, and export leads.
+
+> Make sure your Supabase project is correctly configured with the database tables for buyers and properties.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your message"`
+4. Push to your branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+```
+
+---
+
+```
