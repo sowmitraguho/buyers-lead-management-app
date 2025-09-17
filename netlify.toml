@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"  # for SSR use, otherwise "out" if using `next export`
+
+[build.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "your-supabase-url"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "your-supabase-anon-key"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
