@@ -6,7 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import Lottie from "lottie-react";
-import loginAnim from "/public/lottifiles/login.json";
+import loginAnim from "../../../../public/lottifiles/login.json";
+import { login } from "./action";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -14,29 +15,38 @@ export default function LoginPage() {
   const [remember, setRemember] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
     console.log({ email, password, remember });
-  try {
-    const res = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    // try {
+    //   const res = await fetch("/api/auth/login", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ email, password }),
+    //   });
 
-    const data = await res.json();
+    //   const data = await res.json();
 
-    if (res.ok) {
-      alert("Login successful!");
-      // Optional: redirect to dashboard
-      window.location.href = "/dashboard";
-    } else {
-      alert(data.error);
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Something went wrong!");
-  }
-};
+    //   if (res.ok) {
+    //     alert("Login successful!");
+    //     console.log("Login Response:", data);
+    //     // Optional: redirect to buyers page
+    //     window.location.href = "/buyers";
+    //   } else {
+    //     alert(data.error);
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    //   alert("Something went wrong!");
+    // }
+    const result = login({ email, password });
+    if(result){
+      if('error' in result){
+        alert(result.error);
+      } else {
+        alert("Login successful!");
+        window.location.href = "/buyers";
+      }};
+  };
 
 
   return (

@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 export async function POST(request: Request) {
     const body = await request.json();
     const { email, password } = body;
+    console.log('Login request body:', body);
 
     if (!email || !password) {
         return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -13,10 +14,14 @@ export async function POST(request: Request) {
         email,
         password,
     });
-
+    console.log('Login attempt:', data, error);
     if (error) {
         return NextResponse.json({ error: error.message }, { status: 400 });
     }
+    // else {
+    //     localStorage.setItem("user", JSON.stringify(data.user));
+    //     localStorage.setItem("session", JSON.stringify(data.session));
+    // }
     const response = NextResponse.json({
         user: data.user,
         session: data.session,
