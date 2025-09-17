@@ -69,3 +69,17 @@ export async function PUT(
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const supabase = await createClient();
+  const { id } = await params;
+  const { error } = await supabase.from("buyers").delete().eq("id", id);
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 400 });
+  }
+
+  return NextResponse.json({ success: true, message: "Buyer deleted successfully" });
+}

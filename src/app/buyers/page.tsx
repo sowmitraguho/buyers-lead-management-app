@@ -22,6 +22,7 @@ import {
 import { Card } from "@/components/ui/card";
 import { debounce } from "lodash";
 import { fetchBuyers } from "../hooks/fetchBuyers";
+import  DeleteBuyerButton  from "@/components/DeleteBuyerButton/DeleteBuyerButton";
 
 export default function BuyersPage() {
   const router = useRouter();
@@ -205,6 +206,15 @@ export default function BuyersPage() {
                       >
                         View / Edit
                       </Button>
+                    </TableCell>
+                    <TableCell>
+                      <DeleteBuyerButton
+                        buyerId={buyer.id}
+                        onDeleted={() => {
+                          // optional: re-fetch buyers after delete
+                          fetchBuyers(searchParams).then((data) => setBuyers(data || []));
+                        }}
+                      />
                     </TableCell>
                   </TableRow>
                 ))
