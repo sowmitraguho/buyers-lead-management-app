@@ -103,10 +103,10 @@ export default function Navbar({userProp}: {userProp?: any}) {
                             </>
                         ) : (
                             <>
-                                <Link href="/buyers/new">
+                                <Link href="/properties/new">
                                     <Button size="sm" variant="default">Add Property</Button>
                                 </Link>
-                                <Link href="/add-buyer">
+                                <Link href="/buyers/new">
                                     <Button size="sm" variant="default">Add Buyer</Button>
                                 </Link>
                                 <LogoutButton />

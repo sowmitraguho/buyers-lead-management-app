@@ -23,6 +23,18 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 400 });
+  } else {
+    if (data.user) {
+      await supabase.from("users").insert([
+        {
+          id: data.user.id,
+          full_name: data.user.full_name,
+          email: data.user.email,
+          phone: data.user.phone,
+          role: "seller",
+        },
+      ]);
+    }
   }
 
   return NextResponse.json({ user: data.user });
