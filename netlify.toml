@@ -3,8 +3,8 @@
   publish = ".next"  # for SSR use, otherwise "out" if using `next export`
 
 [build.environment]
-  NEXT_PUBLIC_SUPABASE_URL = https://nwsxkdgbkbvhvxzsdaic.supabase.co
-  NEXT_PUBLIC_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3hrZGdia2J2aHZ4enNkYWljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjI0MzcsImV4cCI6MjA3MzU5ODQzN30.YZxKzrd5ceGDOblBVkLp01wNVXUXlsaPEhx83wGt8iI
+  NEXT_PUBLIC_SUPABASE_URL = "https://nwsxkdgbkbvhvxzsdaic.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im53c3hrZGdia2J2aHZ4enNkYWljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwMjI0MzcsImV4cCI6MjA3MzU5ODQzN30.YZxKzrd5ceGDOblBVkLp01wNVXUXlsaPEhx83wGt8iI"
 
 [[redirects]]
   from = "/*"
