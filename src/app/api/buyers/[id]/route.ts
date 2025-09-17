@@ -83,3 +83,4 @@ export async function DELETE(
 
   return NextResponse.json({ success: true, message: "Buyer deleted successfully" });
 }
+export const runtime = "nodejs";

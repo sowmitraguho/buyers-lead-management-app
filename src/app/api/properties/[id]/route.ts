@@ -61,3 +61,4 @@ export async function DELETE(
 
     return NextResponse.json({ success: true, message: "Property deleted successfully" });
 }
+export const runtime = "nodejs";
