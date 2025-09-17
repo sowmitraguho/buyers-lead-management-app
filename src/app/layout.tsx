@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider/theme-provider";
 import { createClient } from "@/lib/supabase-server";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default async function RootLayout({
       >
           <Navbar userProp={data?.user}/>
           {children}
+          <Footer />
         </ThemeProvider>
 
       </body>
